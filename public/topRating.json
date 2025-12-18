@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co.com/tT7T2zjB/lifestyle-beauty-fashion-people-emotions-concept-young-asian-female-office-manager-ceo-with-pleased.jpg",
+    "name": "John Anderson",
+    "description": "Nature is filled with vibrant colors, from green forests to blue oceans.",
+    "rating": 4.9
+  },
+  {
+    "id": 2,
+    "image": "https://i.ibb.co.com/svgkzRYW/happy-man-student-with-afro-hairdo-shows-white-teeth-being-good-mood-after-classes-273609-16608.jpg",
+    "name": "Sarah Miller",
+    "description": "Nature inspires peace and creativity through its landscapes and seasons.",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co.com/BDXLfG9/handsome-young-cheerful-man-with-arms-crossed-171337-1073.jpg",
+    "name": "Michael Brown",
+    "description": "Spending time in nature helps people feel relaxed and connected to the world.",
+    "rating": 4.7
+  }
+]

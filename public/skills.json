@@ -1,0 +1,102 @@
+[
+    {
+        "skillId": 1,
+        "skillName": "Burflower Tree",
+        "providerName": "Mia Turner",
+        "providerEmail": "mia@skillswap.com",
+        "price": 15,
+        "rating": 4.7,
+        "slotsAvailable": 4,
+        "description": "It has scented orange flowers in dense globe-shaped clusters. The flowers are used in perfumes. The tree is grown as an ornamental plant and for timber.",
+        "image": "https://i.ibb.co.com/8LrhYfZD/burflower-tree-laran-seeds-neolamarckia-cadamba.jpg"
+    },
+    {
+        "skillId": 2,
+         "skillName": "Butterfly Pea",
+        "providerName": "Ethan Cole",
+        "providerEmail": "ethan@skillswap.com",
+        "price": 22,
+        "rating": 4.6,
+        "slotsAvailable": 3,
+        "description": "A climbing plant with deep blue or purple flowers. Its flowers are used to make natural blue tea that changes color with lemon.",
+        "image": "https://i.ibb.co.com/nNVcWcJs/A-close-up-shot-of-flowers-of-the-butterfly-pea.jpg"
+    },
+    {
+        "skillId": 3,
+         "skillName": "Arabian Jasmine",
+        "providerName": "Nora Jensen",
+        "providerEmail": "nora@skillswap.com",
+        "price": 8,
+        "rating": 4.4,
+        "slotsAvailable": 7,
+        "description": "A small shrub with highly fragrant white flowers. It is often used for making garlands, perfumes, and worship decorations. It is often used for making garlands, perfumes, and worship decorations. ",
+        "image": "https://i.ibb.co.com/1YKxrXQx/N4-Ma-Tvji4ybwf-Pb-Hqp-FSpk-1200-80.jpg"
+        
+    },
+    {
+        "skillId": 4,
+       "skillName": "Night-blooming Jasmine",
+        "providerName": "Isabella Rivera",
+        "providerEmail": "isabella@skillswap.com",
+        "price": 30,
+        "rating": 4.9,
+        "slotsAvailable": 2,
+        "description": "A plant famous for its strong sweet scent at night. Its small white-green flowers usually open after sunset and close by morning.",
+        "image": "https://i.ibb.co.com/pvQ2qksX/Night-Blooming-Jasmine-3-copy-jpg-webp.webp"
+    },
+    {
+        "skillId": 5,
+        "skillName": "Bougainvillea",
+        "providerName": "Omar Hassan",
+        "providerEmail": "omar@skillswap.com",
+        "price": 10,
+        "rating": 4.6,
+        "slotsAvailable": 5,
+        "description": "A hardy, thorny climber with colorful paper-like bracts (often mistaken as flowers). It grows well in sunny places and is commonly used on fences and walls.",
+        "image": "https://i.ibb.co.com/c9XYF7Z/Bougainvillea-Flower.png"
+    },
+    {
+        "skillId": 6,
+        "skillName": "Yellow Oleander",
+        "providerName": "Ryan Alvarez",
+        "providerEmail": "ryan@skillswap.com",
+        "price": 18,
+        "rating": 4.7,
+        "slotsAvailable": 4,
+        "description": "An evergreen shrub with bright yellow, trumpet-shaped flowers. It is very poisonous if eaten, so it should be handled with care. An evergreen shrub with bright yellow, trumpet-shaped flowers. It is very poisonous if eaten, so it should be handled with care.",
+        "image": "https://i.ibb.co.com/nNyyfNxG/yellow-oleander-flower-plant-peela-kaner.jpg"
+    },
+    {
+        "skillId": 7,
+         "skillName": "Hibiscus",
+        "providerName": "Liam Patel",
+        "providerEmail": "liam@skillswap.com",
+        "price": 12,
+        "rating": 4.5,
+        "slotsAvailable": 6,
+        "description": "A bright, showy flower that comes in many colors like red, pink, and yellow. It is widely used in gardens and is also popular for herbal tea and hair care.",
+        "image": "https://i.ibb.co.com/RpPKb6RX/1-22de627a-485d-4e10-a677-b12b46a24883-1200x1200.jpg"
+    },
+    {
+        "skillId": 8,
+        "skillName": "Chrysanthemum",
+        "providerName": "Emily Novak",
+        "providerEmail": "emily@skillswap.com",
+        "price": 14,
+        "rating": 4.5,
+        "slotsAvailable": 6,
+        "description": "A popular ornamental flower that blooms in many shapes and colors. It is commonly used for decoration and also for chrysanthemum tea in some cultures.",
+        "image": "https://i.ibb.co.com/67gbwXKd/EASI-C-chrysanthemum-sture-g.jpg"
+    },
+    {
+        "skillId": 9,
+        "skillName": "Royal Poinciana",
+        "providerName": "Omar Hassan",
+        "providerEmail": "omar@skillswap.com",
+        "price": 10,
+        "rating": 4.6,
+        "slotsAvailable": 5,
+        "description": "A large tree known for its stunning red-orange flowers. It creates a beautiful canopy and is often planted along roadsides in warm regions.",
+        "image": "https://i.ibb.co.com/9k4b07MH/resize-s-800-v-1.jpg"
+    }
+]
