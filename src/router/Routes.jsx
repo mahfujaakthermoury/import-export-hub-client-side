@@ -7,9 +7,9 @@ import Profile from "../pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPass from "../pages/ForgetPass";
 import Error from "../pages/Error";
-import AllService from "../pages/AllService";
-import ServiceDetails from "../pages/ServiceDetails";
 import AddExport from "../pages/AddExport";
+import AllProducts from "../pages/AllProducts";
+import ProductDetails from "../pages/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +22,16 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/AllService',
-        element: <AllService></AllService>
+        path: '/AllProducts',
+        element: <AllProducts></AllProducts>
       },
       {
         path: '/AddExport',
         element: <AddExport></AddExport>
+      },
+       {
+        path: '/ProductDetails/:myId',
+        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
       },
       {
         path: '/Login',
@@ -45,6 +49,7 @@ const router = createBrowserRouter([
         path: '/ForgetPass/:email',
         element: <ForgetPass></ForgetPass>
       },
+      
     ]
   }
 ]);

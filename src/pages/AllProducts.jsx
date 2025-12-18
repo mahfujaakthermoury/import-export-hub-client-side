@@ -36,7 +36,7 @@ const AllProducts = () => {
                         <p>Price: {skill?.price}$ </p>
                       </div>
                       <div className="card-actions justify-end">
-                        <Link to={`/ServiceDetails/${skill?.skillId}`}> <motion.button whileHover={{ scale: 1.1 }}
+                        <Link to={`/ProductDetails/${skill?.skillId}`}> <motion.button whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                           className="btn bg-[#1a9b38] text-[#ffffff]  mt-5">View Details</motion.button></Link>
                       </div>
