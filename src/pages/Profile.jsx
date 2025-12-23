@@ -12,13 +12,13 @@ const Profile = () => {
         setIsOpen(!isOpen)
     }
 
-        const notify = () => toast.success('Volunteer Registration Successfull');
+    const notify = () => toast.success('Volunteer Registration Successfull');
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    notify();
-};
+        notify();
+    };
 
 
 
@@ -39,7 +39,7 @@ const Profile = () => {
                 </div>
                 <div>
                     <h3 className=' text-3xl py-8 '>You can join with us as a volunteer!</h3>
-                    <p>Join us as a volunteer and be a part of a meaningful journey to create positive change in the community. 
+                    <p>Join us as a volunteer and be a part of a meaningful journey to create positive change in the community.
                         Your time, skills, and passion can help make a real difference while gaining valuable experience and connections along the way.</p>
                     <button onClick={handleOpenForm} className="btn my-10 bg-[#1a9b38] text-[#ffffff]    font-bold">Volunteer Registration</button>
 

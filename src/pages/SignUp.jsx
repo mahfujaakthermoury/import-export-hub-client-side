@@ -12,7 +12,7 @@ const SignUp = () => {
 
     const { setUser, handleGoogleSignin, signupWithEmailPass } = useContext(AuthContext);
     const navigate = useNavigate();
-        const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,13 +24,13 @@ const SignUp = () => {
         const uppercase = /[A-Z]/;
         const lowerase = /[a-z]/;
 
-        if(password.length < 6){
+        if (password.length < 6) {
             return toast.error('Password must be at least 6 character')
         }
-        if(!uppercase.test(password)){
+        if (!uppercase.test(password)) {
             return toast.error('Need an Uppercase letter')
         }
-        if(!lowerase.test(password)){
+        if (!lowerase.test(password)) {
             return toast.error('Need a Lowercase letter')
         }
 
@@ -78,17 +78,17 @@ const SignUp = () => {
                             <input name='email' type="email" className="input" placeholder="Email" />
                             <label className="label">Photo URL</label>
                             <input name='photoUrl' type="text" className="input" placeholder="Photo URL" />
-                             <div>
-                                                            <label className="label">Password</label>
-                                                            <div className="relative">
-                                                                <input name="password" type={showPassword ? "text" : "password"}
-                                                                    className="input w-full pr-12" placeholder="Password" />
-                                                                <button type="button" onClick={() => setShowPassword(!showPassword)}
-                                                                    className="absolute right-3 top-3 text-2xl">
-                                                                    {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                            <div>
+                                <label className="label">Password</label>
+                                <div className="relative">
+                                    <input name="password" type={showPassword ? "text" : "password"}
+                                        className="input w-full pr-12" placeholder="Password" />
+                                    <button type="button" onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-3 top-3 text-2xl">
+                                        {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                                    </button>
+                                </div>
+                            </div>
                             <div><span>Already have an account? </span><Link to={'/login'} className="link link-hover text-[#00ccff]">Login</Link></div>
                             <button onClick={googleSignup} className="btn mt-5"><span className='text-xl'>
                                 <FcGoogle /></span><span>Signup with Google </span>

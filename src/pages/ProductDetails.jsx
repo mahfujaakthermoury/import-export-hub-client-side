@@ -1,26 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useOutletContext, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { motion } from "motion/react"
 import toast, { Toaster } from 'react-hot-toast';
 
 const ProductDetails = () => {
-      const { name } = useParams();
-    const { email } = useParams();
+    //   const { name } = useParams();
+    // const { email } = useParams();
 
 
-    const [skills, setSkills] = useState([]); 
-     const { cart, setCart } = useOutletContext(); 
+    const [product, setProduct] = useState([]); 
     const { myId } = useParams();
+    const [loading, setLoading] = useState();
+
 
     useEffect(() => {
-        fetch('/skills.json')
+        fetch(`http://localhost:3000/products/${myId}`)
             .then(res => res.json())
-            .then(data => setSkills(data))
+            .then(data => {
+                setProduct(data)
+                setLoading(false)
+            })
             .catch(err => console.log(err))
-    }, [])
-
-    const findResult = skills.find(skill => skill.skillId == myId);
-    console.log(findResult);
+    }, [myId])
 
     const notify = () => toast.success('Tree donation successful.');
     const formRef = useRef(null);
@@ -34,34 +35,32 @@ const ProductDetails = () => {
         }
     };
 
-    const handleCart = () => {
-    setCart(cart + 1);
-    toast.success("Added to cart!");
-  };
 
-
+    if(loading){
+        return <p>Loading....</p>
+    }
+    
     return (
         <div className='my-20'>
             <div className="flex justify-center ">
                 <div className=" card w-full max-w-[700px] bg-base-100 shadow-sm">
                     <figure>
                         <img className='w-full h-[400px] lg:object-cover'
-                            src={findResult?.image}
+                            src={product?.imageUrl}
                             alt="image" />
                     </figure>
                     <div className="card-body">
                         <div className='flex justify-between items-center py-5 '>
-                            <h2 className="card-title">{findResult?.skillName}</h2>
+                            <h2 className="card-title">{product?.name}</h2>
                         </div>
-                        <p className='my-5 w-auto sm:text-justify'>{findResult?.description}</p>
                         <div className="flex justify-between items-center">
                             <div className=' py-5 '>
-                                <p className='font-bold'>Price: {findResult?.price}$ </p>
-                                <p>Rating: {findResult?.rating} </p>
+                                <p className='font-bold'>Price: {product?.price}$ </p>
+                                <p>Rating: {product?.rating} </p>
 
                             </div>
                             <div className=' font-bold py-5'>
-                               <button onClick={handleCart} className="btn bg-[#1a9b38] text-[#ffffff] px-5">Add Cart</button>
+                               <button className="btn bg-[#1a9b38] text-[#ffffff] px-5">Import Now</button>
                             </div>
                         </div>
                     </div>
@@ -74,12 +73,12 @@ const ProductDetails = () => {
                     <div className="card-body">
                         <form ref={formRef} className="fieldset mx-auto text-[15px]">
                             <label className="label">Name</label>
-                            <input defaultValue={name} name='name' type="text" className="input" placeholder="Type Your Name" required />
+                            <input  name='name' type="text" className="input" placeholder="Type Your Name" required />
                             <label className="label">Email</label>
-                            <input defaultValue={email} name='email' type="text" className="input" placeholder="Type your Email" required />
+                            <input  name='email' type="text" className="input" placeholder="Type your Email" required />
                             <label className="label"> Tree</label>
-                            <input defaultValue={name} name='name' type="text" className="input" placeholder="Type Tree Name" required />
-                            <button onClick={handleBooking} type='button' className="btn btn-neutral mt-4 w-[320px]">Donate</button> <Toaster />
+                            <input  name='tree' type="text" className="input" placeholder="Type Tree Name" required />
+                            <button onClick={handleBooking} type='submit' className="btn btn-neutral mt-4 w-[320px]">Donate</button> <Toaster />
                         </form>
                     </div>
                 </div>

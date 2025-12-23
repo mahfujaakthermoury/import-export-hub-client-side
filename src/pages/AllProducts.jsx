@@ -3,12 +3,12 @@ import { Link } from 'react-router';
 import { motion } from "motion/react"
 
 const AllProducts = () => {
-    const [skills, setSkills] = useState([]);
+    const [products, setProducts] = useState([]);
       
         useEffect(() => {
-          fetch('./skills.json')
+          fetch('http://localhost:3000/products')
             .then(res => res.json())
-            .then(data => setSkills(data))
+            .then(data => setProducts(data))
             .catch(err => console.log(err))
         }, [])
       
@@ -18,7 +18,7 @@ const AllProducts = () => {
       
             <div className="sm:px-[100px] sm:grid grid-cols-3 gap-10">
               {
-                skills.map(skill =>
+                products.map(product =>
                   <motion.div initial={{ scale: 0.9 }}
                     animate={{
                       scale: 1,
@@ -26,17 +26,17 @@ const AllProducts = () => {
                     }} className="card bg-base-100 w-96 shadow-sm">
                     <figure>
                       <img className='w-full h-[300px] object-cover'
-                        src={skill?.image}
+                        src={product?.imageUrl}
                         alt="image" />
                     </figure>
                     <div className="card-body">
-                      <h2 className="card-title">{skill?.skillName}</h2>
+                      <h2 className="card-title">{product?.name}</h2>
                       <div className='flex justify-between py-5'>
-                        <p>Rating: {skill?.rating} </p>
-                        <p>Price: {skill?.price}$ </p>
+                        <p>Rating: {product?.rating} </p>
+                        <p>Price: {product?.price}$ </p>
                       </div>
                       <div className="card-actions justify-end">
-                        <Link to={`/ProductDetails/${skill?.skillId}`}> <motion.button whileHover={{ scale: 1.1 }}
+                        <Link to={`/ProductDetails/${product?._id}`}> <motion.button whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                           className="btn bg-[#1a9b38] text-[#ffffff]  mt-5">View Details</motion.button></Link>
                       </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { signOut } from 'firebase/auth';
@@ -7,11 +7,7 @@ import { motion } from "motion/react"
 import logo from '../assets/logo.png'
 import Cart from '../assets/cart.png'
 
-const Nevbar = ({ cart }) => {
-
-
-
-
+const Nevbar = () => {
 
   const { user } = useContext(AuthContext);
   const handleSignOut = () => {
@@ -30,30 +26,28 @@ const Nevbar = ({ cart }) => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             <li><Link to='/'>Home</Link ></li>
             <li><Link to='/AllProducts'>All Products</Link ></li>
+            <li><Link to='/MyExport'>My Export</Link ></li>
+            <li><Link to='/MyImport'>My Import</Link ></li>
             <li><Link to='/AddExport'>Add Export</Link ></li>
-
-            <li><Link to='/Profile'>My Profile</Link ></li>
-
           </ul>
         </div>
-        <a className="btn btn-ghost text-4xl font-bold"><img src={logo} className='h-[80px] w-[80px]' alt="" /></a>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-[17px]">
+        <Link  to='/' className="btn btn-ghost"><img src={logo} className='h-[80px] w-[80px]' alt="" /></Link>
+        <ul className="menu menu-horizontal px-1 text-[17px] hidden lg:flex">
           <li><Link to='/'>Home</Link ></li>
           <li><Link to='/AllProducts'>All Products</Link ></li>
+          <li><Link to='/MyExport'>My Export</Link ></li>
+          <li><Link to='/MyImport'>My Import</Link ></li>
           <li><Link to='/AddExport'>Add Export</Link ></li>
-
-          <li><Link to='/Profile'>My Profile</Link ></li>
         </ul>
       </div>
       {
         user && <div className="navbar-end">
-          <div class=" activity1 flex items-center rounded-[25px]  px-8 max-sm:p-2 mr-5  ">
-            <p >{cart}</p>
-            <img src={Cart} alt="" class="h-[22px] w-[22px] mr-2" />
-          </div>
-          <btn onClick={handleSignOut} className="btn bg-[#ffffff] text-[#109937]  font-bold text-[15px]">Logout</btn>
+            <div className="avatar  rounded-full mr-5 border">
+                        <div className="w-14 rounded-full">
+                            <img src={user?.photoURL || "fallback-image-url"} alt="User" />
+                        </div>
+                    </div>
+          <button onClick={handleSignOut} className="btn bg-[#ffffff] text-[#109937]  font-bold text-[15px]">Logout</button>
         </div>
       }
       {
@@ -61,7 +55,6 @@ const Nevbar = ({ cart }) => {
           className="navbar-end">
           <Link to={'/Login'} className="btn bg-[#1a9b38] text-[#ffffff]  font-bold text-[15px] px-6 mr-3">Login</Link>
           <Link to={'/SignUp'} className="btn bg-[#b5b3b3] text-[#ffffff]  font-bold text-[15px] px-6">Sign Up</Link>
-
         </motion.div>
       }
     </div>

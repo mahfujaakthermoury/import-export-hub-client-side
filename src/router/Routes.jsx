@@ -10,6 +10,8 @@ import Error from "../pages/Error";
 import AddExport from "../pages/AddExport";
 import AllProducts from "../pages/AllProducts";
 import ProductDetails from "../pages/ProductDetails";
+import MyExport from "../pages/MyExport";
+import MyImport from "../pages/MyImport";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/AddExport',
-        element: <AddExport></AddExport>
+        element: <PrivateRoute><AddExport></AddExport></PrivateRoute>
+      },
+      {
+        path: '/MyExport',
+        element: <PrivateRoute><MyExport></MyExport></PrivateRoute>
+      },
+      {
+        path: '/MyImport',
+        element: <PrivateRoute><MyImport></MyImport></PrivateRoute>
       },
        {
         path: '/ProductDetails/:myId',
