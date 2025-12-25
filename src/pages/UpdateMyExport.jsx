@@ -1,17 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+import { useNavigate, useParams } from 'react-router';
 
-
-const AddExport = () => {
-
+const UpdateMyExport = () => {
     const { user } = useContext(AuthContext)
+    const { id } = useParams()
+    const [product, setProduct] = useState()
+    const navigation = useNavigate()
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        axios.get(`http://localhost:3000/products/${id}`)
+            .then(res => {
+                setProduct(res.data)
+            })
+    }, [id])
+
+    console.log(product);
+
+    const handleUpdate = (e) => {
         e.preventDefault();
-        console.log("Product Data:");
-       
+       /// console.log("Product Data:");
+        toast.success("Product update successfully!");
+
         const form = e.target;
 
         const name = form.name.value;
@@ -31,37 +43,33 @@ const AddExport = () => {
             quantity,
             email
         }
-        console.log(formData);
 
-        axios.post('http://localhost:3000/products', formData)
+        axios.put(`http://localhost:3000/update/${id}`, formData)
             .then(res => {
                 console.log(res);
-                  Swal.fire({
-                            title: "Add Export/Product!",
-                            text: "Your Export/Product has been added.",
-                            icon: "success"
-                        });
-                        form.reset()
+                navigation('/MyExport');
             })
-
-
     };
+
+
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-           
+
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 py-20">
+            <Toaster reverseOrder={false} />
             <form
-                onSubmit={handleSubmit}
+                onSubmit={handleUpdate}
                 className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4"
             >
-                <h2 className="text-2xl font-semibold text-center text-gray-700">
-                    Add Export / Product
+                <h2 className="text-2xl font-semibold text-center text-gray-700 mb-8">
+                    Update Export / Product
                 </h2>
 
                 <div>
                     <label className="block text-sm font-medium text-gray-600">
                         Product Name
                     </label>
-                    <input
+                    <input                                                                                  
+                        defaultValue={product?.name}
                         type="text"
                         name="name"
                         required
@@ -74,6 +82,7 @@ const AddExport = () => {
                         Product Image (URL)
                     </label>
                     <input
+                        defaultValue={product?.imageUrl}
                         type="url"
                         name="imageUrl"
                         required
@@ -86,6 +95,7 @@ const AddExport = () => {
                         Price
                     </label>
                     <input
+                        defaultValue={product?.price}
                         type="number"
                         name="price"
                         required
@@ -98,6 +108,7 @@ const AddExport = () => {
                         Origin Country
                     </label>
                     <input
+                        defaultValue={product?.originCountry}
                         type="text"
                         name="originCountry"
                         required
@@ -110,6 +121,7 @@ const AddExport = () => {
                         Rating (0–5)
                     </label>
                     <input
+                        defaultValue={product?.rating}
                         type="number"
                         name="rating"
                         min="0"
@@ -125,6 +137,7 @@ const AddExport = () => {
                         Available Quantity
                     </label>
                     <input
+                        defaultValue={product?.quantity}
                         type="number"
                         name="quantity"
                         required
@@ -147,9 +160,9 @@ const AddExport = () => {
 
                 <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                    className="w-full mt-5 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
                 >
-                    Add Export/Product
+                    Update Export/Product
                 </button>
 
             </form>
@@ -157,4 +170,4 @@ const AddExport = () => {
     );
 };
 
-export default AddExport;
+export default UpdateMyExport;

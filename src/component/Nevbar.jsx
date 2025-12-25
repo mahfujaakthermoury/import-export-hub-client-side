@@ -24,7 +24,6 @@ const Nevbar = () => {
           <ul
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><Link to='/'>Home</Link ></li>
             <li><Link to='/AllProducts'>All Products</Link ></li>
             <li><Link to='/MyExport'>My Export</Link ></li>
             <li><Link to='/MyImport'>My Import</Link ></li>
@@ -33,7 +32,6 @@ const Nevbar = () => {
         </div>
         <Link  to='/' className="btn btn-ghost"><img src={logo} className='h-[80px] w-[80px]' alt="" /></Link>
         <ul className="menu menu-horizontal px-1 text-[17px] hidden lg:flex">
-          <li><Link to='/'>Home</Link ></li>
           <li><Link to='/AllProducts'>All Products</Link ></li>
           <li><Link to='/MyExport'>My Export</Link ></li>
           <li><Link to='/MyImport'>My Import</Link ></li>
