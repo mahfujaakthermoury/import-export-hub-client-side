@@ -11,7 +11,7 @@ const UpdateMyExport = () => {
     const navigation = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/products/${id}`)
+        axios.get(`https://import-export-hub-gules.vercel.app/products/${id}`)
             .then(res => {
                 setProduct(res.data)
             })
@@ -44,7 +44,7 @@ const UpdateMyExport = () => {
             email
         }
 
-        axios.put(`http://localhost:3000/update/${id}`, formData)
+        axios.put(`https://import-export-hub-gules.vercel.app/update/${id}`, formData)
             .then(res => {
                 console.log(res);
                 navigation('/MyExport');

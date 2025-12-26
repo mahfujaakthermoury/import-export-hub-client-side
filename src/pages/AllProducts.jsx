@@ -7,7 +7,7 @@ const AllProducts = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products?search=${search}`)
+    fetch(`https://import-export-hub-gules.vercel.app/products?search=${search}`)
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.log(err))

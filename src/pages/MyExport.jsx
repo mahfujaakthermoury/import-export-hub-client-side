@@ -10,7 +10,7 @@ const MyExport = () => {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-export?email=${user?.email}`)
+        fetch(`https://import-export-hub-gules.vercel.app/my-export?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMyExport(data))
             .catch(err => console.log(err))
@@ -31,7 +31,7 @@ const MyExport = () => {
 
             if (result.isConfirmed) {
                 
-                axios.delete(`http://localhost:3000/delete/${id}`)
+                axios.delete(`https://import-export-hub-gules.vercel.app/delete/${id}`)
                     .then(res => {
                         console.log(res);
                         const filterData = myExport.filter(product => product._id != id)

@@ -33,7 +33,7 @@ const AddExport = () => {
         }
         console.log(formData);
 
-        axios.post('http://localhost:3000/products', formData)
+        axios.post('https://import-export-hub-gules.vercel.app/products', formData)
             .then(res => {
                 console.log(res);
                   Swal.fire({

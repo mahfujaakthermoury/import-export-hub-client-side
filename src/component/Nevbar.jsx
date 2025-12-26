@@ -48,7 +48,8 @@ const Nevbar = () => {
         </ul>
       </div>
 
-      <div className="navbar-end">
+    {
+      user &&   <div className="navbar-end">
         <div className=" dropdown dropdown-end relative">
 
           {/* profile */}
@@ -67,8 +68,8 @@ const Nevbar = () => {
 
 
             {/* Logout button */}
-            <li>{
-              user && <div className=" mt-2 ">
+            <li>
+             <div className=" mt-2 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 fill-current"
@@ -86,7 +87,7 @@ const Nevbar = () => {
                 <button onClick={handleSignOut} className=" font-bold text-sm w-30 text-start">
                   Logout</button>
               </div>
-            }</li>
+            </li>
 
             {/*  Change Theme */}
             <li className=' flex flex-row items-center justify-center '>
@@ -118,6 +119,7 @@ const Nevbar = () => {
           </ul>
         </div>
       </div>
+    }
 
       {
         !user && <motion.div end={{ scale: 0.5 }} animate={{ scale: 0.9 }}

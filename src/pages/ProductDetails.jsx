@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/products/${myId}`)
+        fetch(`https://import-export-hub-gules.vercel.app/products/${myId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data);
@@ -51,7 +51,7 @@ const ProductDetails = () => {
     //     }
 
     //     try {
-    //         const response = await fetch(`http://localhost:3000/update/${myId}`, {
+    //         const response = await fetch(`https://import-export-hub-gules.vercel.app/update/${myId}`, {
     //             method: 'PUT',
     //             headers: { 'Content-Type': 'application/json' },
     //             body: JSON.stringify({ importQuantity }) // Backend will use $inc
@@ -88,7 +88,7 @@ const ProductDetails = () => {
 
         console.log(formData);
 
-        axios.post('http://localhost:3000/my-import', formData)
+        axios.post('https://import-export-hub-gules.vercel.app/my-import', formData)
             .then(res => {
                 console.log(res);
             })
