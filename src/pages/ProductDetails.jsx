@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
 import toast, { Toaster } from 'react-hot-toast';
+import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ProductDetails = () => {
     const { myId } = useParams();
@@ -36,47 +37,66 @@ const ProductDetails = () => {
         }
     };
 
-    const handleImportSubmit = async () => {
-        if (!importQuantity || importQuantity <= 0) return;
+    // const handleImportSubmit = async () => {
+    //     if (!importQuantity || importQuantity <= 0) return;
 
-        if (product.quantity === 0) {
-            alert("Cannot import: product quantity is 0");
-            return;
-        }
+    //     if (product.quantity === 0) {
+    //         alert("Cannot import: product quantity is 0");
+    //         return;
+    //     }
 
-        if (importQuantity > product.quantity) {
-            alert("Cannot import more than available quantity");
-            return;
-        }
+    //     if (importQuantity > product.quantity) {
+    //         alert("Cannot import more than available quantity");
+    //         return;
+    //     }
 
-        try {
-            const response = await fetch(`http://localhost:3000/update/${myId}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ importQuantity }) // Backend will use $inc
+    //     try {
+    //         const response = await fetch(`http://localhost:3000/update/${myId}`, {
+    //             method: 'PUT',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ importQuantity }) // Backend will use $inc
+    //         });
+
+    //         const data = await response.json();
+    //         if (data.error) {
+    //             toast.error(data.error);
+    //             return;
+    //         }
+
+    //         Swal.fire({
+    //             title: "Product imported successfully!",
+    //             icon: "success",
+    //             draggable: true
+    //         });
+    //         document.getElementById('my_modal_3').close();
+
+    //         setProduct(prev => ({ ...prev, quantity: prev.quantity - importQuantity }));
+    //         setImportQuantity('');
+    //         setIsSubmitDisabled(true);
+    //     } catch (err) {
+    //         console.error(err);
+    //         toast.error('Failed to import product');
+    //     }
+
+    // };
+
+    const handleOrders = (e) => {
+        e.preventDefault();
+
+        const quantity = e.target.quantity.value;
+        const formData = { orderId: myId, quantity };
+
+        console.log(formData);
+
+        axios.post('http://localhost:3000/my-import', formData)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.error(err);
             });
-
-            const data = await response.json();
-            if (data.error) {
-                toast.error(data.error);
-                return;
-            }
-
-            Swal.fire({
-                title: "Product imported successfully!",
-                icon: "success",
-                draggable: true
-            });
-            document.getElementById('my_modal_3').close();
-
-            setProduct(prev => ({ ...prev, quantity: prev.quantity - importQuantity }));
-            setImportQuantity('');
-            setIsSubmitDisabled(true);
-        } catch (err) {
-            console.error(err);
-            toast.error('Failed to import product');
-        }
     };
+
 
     if (loading) return <p>Loading...</p>;
 
@@ -114,6 +134,7 @@ const ProductDetails = () => {
                                     <h3 className="text-lg text-center">Input your product quantity:</h3>
                                     <input
                                         type="number"
+                                        name='quantity'
                                         value={importQuantity}
                                         onChange={handleQuantityChange}
                                         className="input w-1/2 mx-auto text-center"
@@ -124,7 +145,8 @@ const ProductDetails = () => {
                                         <button
                                             className="btn bg-[#1a9b38] text-white"
                                             disabled={isSubmitDisabled}
-                                            onClick={handleImportSubmit}
+                                            //onClick={handleImportSubmit}
+                                            onClick={handleOrders}
                                         >
 
                                             Submit
