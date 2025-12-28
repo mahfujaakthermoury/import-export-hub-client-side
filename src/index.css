@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+* {
+    font-family: "Roboto Slab", serif;
+}
+
+.navbar .menu li > a {
+  color: #074799;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .menu li > a:hover {
+  background-color: #4DA8DA;
+  color: white;
+}

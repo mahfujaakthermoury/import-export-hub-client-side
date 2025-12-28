@@ -16,7 +16,7 @@ const MyExport = () => {
             .catch(err => console.log(err))
     }, [user?.email])
 
-    console.log(myExport);
+    //console.log(myExport);
 
     const handleDelete = (id) => {
         Swal.fire({

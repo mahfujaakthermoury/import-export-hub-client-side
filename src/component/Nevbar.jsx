@@ -24,7 +24,7 @@ const Nevbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-10 py-7">
+    <div className="navbar bg-base-100 shadow-sm px-20 py-3 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,14 +33,15 @@ const Nevbar = () => {
           <ul
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><Link to='/AllProducts'>All Products</Link ></li>
+            <li><Link to='/AllProducts' className="hover:text-[#3F9AAE]">All Products</Link ></li>
             <li><Link to='/MyExport'>My Export</Link ></li>
             <li><Link to='/MyImport'>My Import</Link ></li>
             <li><Link to='/AddExport'>Add Export</Link ></li>
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost"><img src={logo} className='h-[80px] w-[80px]' alt="" /></Link>
-        <ul className="menu menu-horizontal px-1 text-[17px] hidden lg:flex">
+        <Link to='/' className="cursor-pointer"><motion.img whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }} src={logo} className='h-[65px] w-[68  px]' alt="" /></Link>
+        <ul className="menu menu-horizontal pl-5 text-[17px] hidden lg:flex">
           <li><Link to='/AllProducts'>All Products</Link ></li>
           <li><Link to='/MyExport'>My Export</Link ></li>
           <li><Link to='/MyImport'>My Import</Link ></li>
@@ -55,21 +56,21 @@ const Nevbar = () => {
           {/* profile */}
           <div tabIndex={0} role="button" className="m-1">
             <div className=" cursor-pointer avatar  rounded-full mr-5 border">
-              <div className="w-14 rounded-full">
+              <div className="w-12 rounded-full">
                 <img src={user?.photoURL || "fallback-image-url"} alt="User" />
               </div>
             </div>
           </div>
 
           <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-50 w-60 shadow-sm">
-            <li className="text-center font-bold">{user?.displayName || "No Name"}</li>
+            <li className="text-center font-bold text-[#074799] text-xl">{user?.displayName || "No Name"}</li>
             <li className="text-center text-gray-500 text-sm mb-2.5">{user?.email}</li>
             <div className="border-b border-gray-200 my-2"></div>
 
 
             {/* Logout button */}
             <li>
-             <div className=" mt-2 ">
+             <div className=" mt-2 text-[#074799] hover:text-[#4DA8DA] hover:bg-[#dadada]  ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 fill-current"
@@ -91,7 +92,7 @@ const Nevbar = () => {
 
             {/*  Change Theme */}
             <li className=' flex flex-row items-center justify-center '>
-              <p className='text-sm font-bold w-55'>Dark / Light Mode :<label className="swap swap-rotate mr-5">
+              <p className='bg- text-sm font-bold w-55 text-[#074799] hover:text-[#4DA8DA] hover:bg-[#dadada] '>Dark / Light Mode :<label className="swap swap-rotate mr-5">
 
                 <input type="checkbox" className="theme-controller" value="synthwave" checked={theme === "dark"}
                   onChange={(e) => handleTheme(e.target.checked)} />

@@ -34,7 +34,12 @@ const AllProducts = () => {
 
     <div className='pt-20 sm:px-10 py-20'>
 
-      <h3 className='font-bold text-[#076a21]  text-3xl sm:text-4xl  text-center pb-15'>All Plant Collection</h3>
+      <h3 className='font-bold text-3xl sm:text-4xl  text-center'>All Service Category</h3>
+       <p className="text-gray-600 max-w-2xl mx-auto my-5 text-center">
+    Explore our complete range of import and export services designed to simplify
+    global trade. From product sourcing to international delivery, we ensure
+    reliable and efficient solutions for your business needs.
+  </p>
 
       {/* Search Option */}
       <div className="join flex justify-end mb-20">
@@ -58,7 +63,7 @@ const AllProducts = () => {
           </label>
           <div className="validator-hint hidden">Enter Product Title</div>
         </div>
-        <button className="btn btn-neutral join-item">Search</button>
+        <button className="btn btn-neutral join-item px-7 text-[#e3e9f1] bg-[#074799]">Search</button>
       </div>
 
       {/* All Product */}
@@ -71,13 +76,13 @@ const AllProducts = () => {
                 transition: { duration: 1 }
               }} className="card bg-base-100 w-96 shadow-sm">
               <figure>
-                <img className='w-full h-[300px] object-cover'
+                <img className='w-full h-[250px] object-cover'
                   src={product?.imageUrl}
                   alt="image" />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{product?.name}</h2>
-                <div className='flex justify-between'>
+                <h2 className="card-title text-[#074799]">{product?.name}</h2>
+                <div className='flex justify-between text-[15px]'>
                      <div className='py-5'>
                        <p>Origin Country: {product?.originCountry}</p>
                        <p className=''>Available Quantity: {product?.quantity} </p>
@@ -90,7 +95,7 @@ const AllProducts = () => {
                 <div className="card-actions justify-end">
                   <Link to={`/ProductDetails/${product?._id}`}> <motion.button whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn bg-[#1a9b38] text-[#ffffff]  mt-5">View Details</motion.button></Link>
+                    className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#dadada] mt-5">View Details</motion.button></Link>
                 </div>
               </div>
             </motion.div>

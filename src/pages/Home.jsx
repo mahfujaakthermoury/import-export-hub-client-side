@@ -1,8 +1,8 @@
 import React from 'react';
 import Slider from '../component/Slider';
-import TopVolunteers from '../component/TopVolunteers';
 import ActivitySummary from '../component/ActivitySummary';
 import PopularProduct from '../component/PopularProduct';
+import CustomerSupport from '../component/CustomerSupport';
 
 
 
@@ -12,7 +12,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularProduct></PopularProduct>
             <ActivitySummary></ActivitySummary>
-            <TopVolunteers></TopVolunteers>
+            <CustomerSupport></CustomerSupport>
         </div>
     );
 };
