@@ -32,7 +32,7 @@ const PopularProduct = () => {
                    transition: { duration: 3 }
                  }} className="card bg-base-100 w-96 shadow-sm">
                  <figure>
-                   <img className='w-full h-[250px] object-cover'
+                   <img className='w-full h-[250px] object-cover transition-transform duration-300 hover:scale-105'
                      src={product?.imageUrl}
                      alt="image" />
                  </figure>

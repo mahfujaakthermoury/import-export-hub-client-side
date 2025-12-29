@@ -3,8 +3,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from '../provider/AuthProvider';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
+import useTitle from '../hooks/useTitle';
 
 const UpdateMyExport = () => {
+
+    useTitle('Update My Export');
+
     const { user } = useContext(AuthContext)
     const { id } = useParams()
     const [product, setProduct] = useState()
@@ -160,9 +164,9 @@ const UpdateMyExport = () => {
 
                 <button
                     type="submit"
-                    className="w-full mt-5 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                    className="w-full font-bold mt-5 py-2 rounded-md text-[#074799] hover:bg-[#4DA8DA] bg-[#dadada] border border-[#074799]"
                 >
-                    Update Export/Product
+                    Update Product
                 </button>
 
             </form>

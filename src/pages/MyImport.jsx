@@ -3,8 +3,12 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const MyImport = () => {
+
+  useTitle('My Import');
+
   const { user } = useContext(AuthContext);
   const [myImports, setMyImports] = useState([]);
 
@@ -48,8 +52,12 @@ const MyImport = () => {
 
   return (
     <div className="p-10">
-      <h2 className="text-2xl font-bold mb-6">My Imports</h2>
+ <div className="mb-8 text-center">
+                <h2 className="text-3xl font-bold ">
+                    My Import Products
+                </h2>
 
+            </div>
       <div className="grid md:grid-cols-3 gap-6">
         {myImports.map(item => (
           <div key={item?._id} className="card bg-base-100 shadow">

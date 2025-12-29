@@ -3,8 +3,11 @@ import { AuthContext } from '../provider/AuthProvider';
 import { Link } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useTitle from '../hooks/useTitle';
 
 const MyExport = () => {
+
+    useTitle('My Export');
 
     const [myExport, setMyExport] = useState([]);
     const { user } = useContext(AuthContext)
@@ -30,7 +33,7 @@ const MyExport = () => {
         }).then((result) => {
 
             if (result.isConfirmed) {
-                
+
                 axios.delete(`https://import-export-hub-gules.vercel.app/delete/${id}`)
                     .then(res => {
                         console.log(res);
@@ -50,13 +53,22 @@ const MyExport = () => {
 
     return (
         <div className='p-20'>
+            <div className="mb-8 text-center">
+                <h2 className="text-3xl font-bold ">
+                    My Export Products
+                </h2>
+                <p className="text-gray-600 mt-2 mb-20">
+                    Manage, update, and remove your exported products easily from here.
+                </p>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Job</th>
+                        <tr className='text-[17px]'>
+                            <th>Image</th>
+                            <th>Products Name</th>
+                            <th>Products Details</th>
                             <th>Action</th>
                             <th></th>
                         </tr>
@@ -74,21 +86,24 @@ const MyExport = () => {
                                                         alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="flex items-center gap-3">
                                             <div>
                                                 <div className="font-bold">{product?.name}</div>
-                                                <div className="text-sm opacity-50">{product?.originCountry}</div>
+                                                <div className="text-sm opacity-50">Origin Country: {product?.originCountry}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        Zemlak, Daniel and Leannon
-                                        <br />
-                                        <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                        <div className="font-bold">Product Price: {product?.price}</div>
+                                        <div className="text-sm opacity-50">Product Rating: {product?.rating}</div>
                                     </td>
                                     <th className='flex gap-3'>
-                                        <Link to={`/UpdateMyExport/${product?._id}`} className="btn bg-[#0077d1] btn-xs text-white p-3">Update</Link>
+                                        <Link to={`/UpdateMyExport/${product?._id}`} className="btn bg-[#0077d1] btn-xs text-white p-3 my-3">Update</Link>
 
-                                        <button onClick={() => handleDelete(product?._id)} className="btn bg-[#e71010] btn-xs text-white p-3">Delete</button>
+                                        <button onClick={() => handleDelete(product?._id)} className="btn bg-[#e71010] btn-xs text-white p-3 my-3">Delete</button>
                                     </th>
                                 </tr>
                             )

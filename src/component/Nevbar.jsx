@@ -125,8 +125,7 @@ const Nevbar = () => {
       {
         !user && <motion.div end={{ scale: 0.5 }} animate={{ scale: 0.9 }}
           className="navbar-end">
-          <Link to={'/Login'} className="btn bg-[#1a9b38] text-[#ffffff]  font-bold text-[15px] px-6 mr-3">Login</Link>
-          <Link to={'/SignUp'} className="btn bg-[#b5b3b3] text-[#ffffff]  font-bold text-[15px] px-6">Sign Up</Link>
+          <Link to={'/Login'} className="btn text-[#ffffff] hover:text-[#b1b2b2] hover:bg-[#074799] bg-[#4DA8DA]  font-bold text-[18px] px-10 py-5">Login</Link>
         </motion.div>
       }
     </div>

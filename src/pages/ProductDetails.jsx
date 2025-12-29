@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import useTitle from '../hooks/useTitle';
 
 
 const ProductDetails = () => {
 
+  useTitle('Product Details');
+  
   const { myId } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,14 +68,14 @@ const ProductDetails = () => {
 
   return (
     <div className='my-20'>
-      <div className="flex justify-center">
-        <div className="card w-full max-w-[700px] bg-base-100 shadow-sm">
+      <div className="flex justify-center transition-all duration-300 hover:-translate-y-2">
+        <div className=" card w-full max-w-[700px] bg-base-100 shadow-sm">
           <figure>
-            <img className='w-full h-[400px] lg:object-cover' src={product?.imageUrl} alt={product?.name} />
+            <img className='w-full h-[400px] lg:object-cover transition-transform duration-300 hover:scale-90' src={product?.imageUrl} alt={product?.name} />
           </figure>
           <div className="card-body">
             <div className='flex justify-between items-center py-5'>
-              <h2 className="card-title">{product?.name}</h2>
+              <h2 className="card-title text-[#074799]">{product?.name}</h2>
             </div>
             <div className="flex justify-between items-center">
               <div className='py-5'>
@@ -82,7 +85,7 @@ const ProductDetails = () => {
               </div>
 
               <button
-                className="btn bg-[#1a9b38] text-white"
+                className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#dadada] border-[#074799]"
                 onClick={() => document.getElementById('my_modal_3').showModal()}
                 disabled={product.quantity === 0}
               >
@@ -110,7 +113,7 @@ const ProductDetails = () => {
                   <div className="flex justify-center">
                     <button
                       type='submit'
-                      className="btn bg-[#1a9b38] text-white"
+                      className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#ffffff] border-[#074799]"
                       disabled={isSubmitDisabled}
                  
                     >

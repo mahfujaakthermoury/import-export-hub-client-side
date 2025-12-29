@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { motion } from "motion/react"
+import useTitle from '../hooks/useTitle';
 
 const AllProducts = () => {
+
+  useTitle('All Products');
+
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
 
@@ -76,7 +80,7 @@ const AllProducts = () => {
                 transition: { duration: 1 }
               }} className="card bg-base-100 w-96 shadow-sm">
               <figure>
-                <img className='w-full h-[250px] object-cover'
+                <img className='w-full h-[250px] object-cover transition-transform duration-300 hover:scale-105'
                   src={product?.imageUrl}
                   alt="image" />
               </figure>

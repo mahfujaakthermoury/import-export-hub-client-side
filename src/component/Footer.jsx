@@ -12,7 +12,6 @@ const Footer = () => {
           <Link to='/' className="cursor-pointer"><motion.img whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }} src={logo} className='h-[85px] w-[78px]' alt="" /></Link>
           <h1 className='text-3xl font-bold text-[#074799]'>Import Export <span className='text-[#4DA8DA]'>Hub</span></h1>
-         
         </aside>
         <nav className='text-[17px]'>
           <h6 className="footer-title">Contact</h6>
@@ -26,25 +25,37 @@ const Footer = () => {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </nav>
-        <nav>
+        <nav className='flex-col items-center mx-auto'>
           <h6 className="footer-title text-[17px]">Social Link</h6>
-          <div className="grid grid-flow-col gap-4 text-[#4DA8DA]">
+          <div className="grid grid-flow-col gap-4 text-[#4DA8DA] cursor-pointer">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                className="fill-current">
-                <path
-                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
+                className="fill-current"
+              >
+                <path d="M18.901 1.153h3.68l-8.04 9.188L24 22.846h-7.406l-5.8-7.584-6.636 7.584H.472l8.6-9.83L0 1.153h7.594l5.243 6.932 6.064-6.932zm-1.29 19.43h2.04L6.51 3.286H4.32l13.29 17.297z" />
+              </svg>
+
+            </a>
+            <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                className="fill-current"
+              >
+                <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 24h5V7H0v17zM7.5 7H12v2.5h.06c.63-1.2 2.18-2.46 4.48-2.46 4.8 0 5.68 3.16 5.68 7.28V24h-5v-8.18c0-1.95-.04-4.46-2.72-4.46-2.72 0-3.14 2.12-3.14 4.32V24h-5V7z" />
               </svg>
             </a>
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="26"
+                height="26"
                 viewBox="0 0 24 24"
                 className="fill-current">
                 <path
@@ -65,11 +76,11 @@ const Footer = () => {
           </div>
         </nav>
       </footer>
-       <hr className='text-[#f4f4f4] mx-10'/>
+      <hr className='text-[#f4f4f4] mx-10' />
 
 
-      <div className='bg-[#dadada]  px-20 py-8 text-center flex justify-around'>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved by Import Export Hub</p> 
+      <div className='bg-[#dadada]  px-20 py-5 text-center flex justify-around'>
+        <p>Copyright © {new Date().getFullYear()} - All right reserved by Import Export Hub</p>
         <p>Develop by <span className=" text-[#074799]">Mahfuja Akther</span> </p>
 
       </div>
