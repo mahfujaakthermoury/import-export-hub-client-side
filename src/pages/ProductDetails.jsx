@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import useTitle from '../hooks/useTitle';
+import { AuthContext } from '../provider/AuthProvider';
 
 
 const ProductDetails = () => {
 
   useTitle('Product Details');
-  
+
+  const { user } = useContext(AuthContext);
+
   const { myId } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [importQuantity, setImportQuantity] = useState('');
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
 
   useEffect(() => {
     fetch(`https://import-export-hub-gules.vercel.app/products/${myId}`)
@@ -24,41 +26,37 @@ const ProductDetails = () => {
       .catch(err => console.log(err));
   }, [myId]);
 
-  const handleQuantityChange = (e) => {
-          e.preventDefault();
-
-    const value = Number(e.target.value);
-    setImportQuantity(value);
-
-    if (value === 0) {
-      alert("Quantity is not valid"); // User entered 0
-      setIsSubmitDisabled(true);
-    } else if (!value || value < 0 || value > product.quantity) {
-      setIsSubmitDisabled(true);
-    } else {
-      setIsSubmitDisabled(false);
-    }
-  };
-
-
 
   const handleOrders = (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    const quantity = Number(e.target.quantity.value);
+    const formData = {
+      orderId: myId,
+      name: product.name,
+      image: product.imageUrl, 
+      price: product.price,
+      country: product.originCountry,
+      rating: product.rating,
+      email: user?.email,
+      status: "pending",
+      createdAt: new Date(),
+      quantity,
+    };
 
-      const quantity = e.target.quantity.value
-      const formData = { 
-        orderId: myId, 
-        quantity };
+    console.log(formData);
 
-      console.log(formData);
+    axios.post('https://import-export-hub-gules.vercel.app/orders', formData)
+      .then(res => {
+        alert("Request submitted successfully!");
+        console.log(res);
+        e.target.reset();
+        document.getElementById('my_modal_3').close();
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Server error. Try again later.");
+      });
 
-      axios.post('https://import-export-hub-gules.vercel.app/orders', formData)
-          .then(res => {
-              console.log(res);
-          })
-          .catch(err => {
-              console.error(err);
-          });
   };
 
 
@@ -99,28 +97,27 @@ const ProductDetails = () => {
                     <button className="btn btn-sm btn-circle btn-ghost text-red-500">✕</button>
                   </form>
 
-                 <form action="" onSubmit={handleOrders}>
-                   <h3 className="text-lg text-center">Input your product quantity:</h3>
-                  <input
-                    type="number"
-                    name='quantity'
-                    value={importQuantity}
-                    onChange={handleQuantityChange}
-                    className="input mx-auto  my-5 "
-                    placeholder="Enter quantity"
-                    required
-                  />
-                  <div className="flex justify-center">
-                    <button
-                      type='submit'
-                      className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#ffffff] border-[#074799]"
-                      disabled={isSubmitDisabled}
-                 
-                    >
-                      Submit
-                    </button>
-                  </div>
-                 </form>
+                  <form action="" onSubmit={handleOrders}>
+                    <h3 className="text-lg text-center">Input your product quantity:</h3>
+                    <input
+                      type="number"
+                      name='quantity'
+
+                      className="input mx-auto  my-5 "
+                      placeholder="Enter your quantity"
+                      required
+                    />
+                    <div className="flex justify-center">
+                      <button
+                        type='submit'
+                        className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#ffffff] border-[#074799]"
+
+
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </dialog>
             </div>
