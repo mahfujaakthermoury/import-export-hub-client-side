@@ -10,6 +10,7 @@ const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
 
+
   useEffect(() => {
     fetch(`https://import-export-hub-gules.vercel.app/products?search=${search}`)
       .then(res => res.json())
@@ -32,7 +33,7 @@ const AllProducts = () => {
 
   return matchesName || matchesCountry || matchesPrice;
 });
-
+  
 
   return (
 

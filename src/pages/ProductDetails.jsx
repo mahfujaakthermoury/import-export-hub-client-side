@@ -14,7 +14,9 @@ const ProductDetails = () => {
   const { myId } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
 
+  const availableQuantity = product.quantity;
 
   useEffect(() => {
     fetch(`https://import-export-hub-gules.vercel.app/products/${myId}`)
@@ -27,13 +29,16 @@ const ProductDetails = () => {
   }, [myId]);
 
 
-  const handleOrders = (e) => {
+
+  const handleOrders = async (e) => {
     e.preventDefault();
-    const quantity = Number(e.target.quantity.value);
+
+    if (quantity > availableQuantity) return;
+
     const formData = {
       orderId: myId,
       name: product.name,
-      image: product.imageUrl, 
+      image: product.imageUrl,
       price: product.price,
       country: product.originCountry,
       rating: product.rating,
@@ -45,17 +50,34 @@ const ProductDetails = () => {
 
     console.log(formData);
 
-    axios.post('https://import-export-hub-gules.vercel.app/orders', formData)
-      .then(res => {
-        alert("Request submitted successfully!");
-        console.log(res);
-        e.target.reset();
-        document.getElementById('my_modal_3').close();
-      })
-      .catch(err => {
-        console.log(err);
-        alert("Server error. Try again later.");
-      });
+    try {
+      await axios.post('https://import-export-hub-gules.vercel.app/orders', formData);
+
+      await axios.patch(`https://import-export-hub-gules.vercel.app/quantity-update/${myId}`, { quantity: Number(quantity) });
+
+      const res = await axios.get(`https://import-export-hub-gules.vercel.app/products/${myId}`);
+      setProduct(res.data);
+
+      alert("Request submitted successfully!");
+      document.getElementById('my_modal_3').close();
+      e.target.reset();
+
+    } catch (err) {
+      console.error(err.response?.data || err);
+      alert(err.response?.data?.message || "Server error");
+    }
+
+    // axios.post('https://import-export-hub-gules.vercel.app/orders', formData)
+    //   .then(res => {
+    //     alert("Request submitted successfully!");
+    //     console.log(res);
+    //     e.target.reset();
+    //     document.getElementById('my_modal_3').close();
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     alert("Server error. Try again later.");
+    //   });
 
   };
 
@@ -102,7 +124,9 @@ const ProductDetails = () => {
                     <input
                       type="number"
                       name='quantity'
-
+                      min='1'
+                      max={availableQuantity}
+                      onChange={(e) => setQuantity(Number(e.target.value))}
                       className="input mx-auto  my-5 "
                       placeholder="Enter your quantity"
                       required
@@ -110,9 +134,8 @@ const ProductDetails = () => {
                     <div className="flex justify-center">
                       <button
                         type='submit'
-                        className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#ffffff] border-[#074799]"
-
-
+                        className={`btn ${quantity > availableQuantity ? "btn-disabled" : "text-[#074799] hover:bg-[#4DA8DA] bg-[#ffffff] border-[#074799]"
+                          }`}
                       >
                         Submit
                       </button>

@@ -12,56 +12,50 @@ const MyImport = () => {
 
   useTitle('My Import');
 
-  //const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [myImports, setMyImports] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://import-export-hub-gules.vercel.app/my-import?email=${user?.email}`
-  //   )
-  //     .then(res => res.json())
-  //     .then(data => setMyImports(data))
-  //     .catch(err => console.log(err))
-  // }, [user?.email]);
-
   useEffect(() => {
-    fetch('https://import-export-hub-gules.vercel.app/orders')
+    fetch(
+      `https://import-export-hub-gules.vercel.app/orders?email=${user?.email}`
+    )
       .then(res => res.json())
       .then(data => setMyImports(data))
       .catch(err => console.log(err))
-  }, [])
-
+  }, [user?.email]);
+  
   console.log(myImports);
 
-  // const handleRemove = (id) => {
-  //     Swal.fire({
-  //         title: "Are you sure?",
-  //         text: "You won't be able to revert this!",
-  //         icon: "warning",
-  //         showCancelButton: true,
-  //         confirmButtonColor: "#3085d6",
-  //         cancelButtonColor: "#d33",
-  //         confirmButtonText: "Yes, delete it!"
-  //     }).then((result) => {
+  //delete imported product
+  const handleRemove = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
 
-  //         if (result.isConfirmed) {
+      if (result.isConfirmed) {
 
-  //             axios.delete(`https://import-export-hub-gules.vercel.app/imports-delete/${id}`)
-  //                 .then(res => {
-  //                     console.log(res);
-  //                     const filterData = myImports.filter(order => order._id != id)
-  //                     setMyImports(filterData)
-  //                 })
-  //                 .catch(err => console.log(err));
+        axios.delete(`https://import-export-hub-gules.vercel.app/imports-delete/${id}`)
+          .then(res => {
+            console.log("Delete response", res.data);
+            const filterData = myImports.filter(order => order?._id !== id)
+            setMyImports(filterData)
+          })
+          .catch(err => console.log(err));
 
-  //             Swal.fire({
-  //                 title: "Deleted!",
-  //                 text: "Your file has been deleted.",
-  //                 icon: "success"
-  //             });
-  //         }
-  //     });
-  // }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+  }
 
   return (
     <div className="order p-10">
@@ -88,7 +82,7 @@ const MyImport = () => {
                       }`}
                   />
                 ))}
-                <span className="ml-2 text-gray-600">({order.rating})</span>
+                <span className="ml-2 text-gray-600">({order?.rating})</span>
               </div>
             </div>
             <div>
@@ -97,13 +91,13 @@ const MyImport = () => {
 
             </div>
 
-            <div className="">             
+            <div className="">
               <Link to={`/ProductDetails/${order?.orderId}`}> <motion.button whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }} className="btn text-[#074799] hover:bg-[#4DA8DA] bg-[#dadada] ">
                 See Details</motion.button>
               </Link>
 
-              <motion.button // onClick={() => handleRemove(item?._id)}
+              <motion.button onClick={() => handleRemove(order?._id)} 
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }} className="btn text-[#f0421a] bg-[#dadada] hover:bg-[#d62121] hover:text-[#dadada] ml-4">
                 Remove </motion.button>

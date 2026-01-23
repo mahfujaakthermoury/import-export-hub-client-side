@@ -8,14 +8,31 @@ const Footer = () => {
   return (
     <>
       <footer className="footer sm:footer-horizontal bg-[#dadada]  px-20 py-10">
-        <aside className='flex items-center h-full'>
-          <Link to='/' className="cursor-pointer"><motion.img whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }} src={logo} className='h-[85px] w-[78px]' alt="" /></Link>
-          <h1 className='text-3xl font-bold text-[#074799]'>Import Export <span className='text-[#4DA8DA]'>Hub</span></h1>
+        <aside className=''>
+          <div className='flex justify-center w-full pl-3 mb-5'>
+            <form>
+              <h6 className="footer-title">Newsletter</h6>
+              <fieldset className="w-80">
+                <div className="join">
+                  <input
+                    type="text"
+                    placeholder="Enter your email..."
+                    className="input input-bordered join-item" />
+                  <button className="btn bg-[#074799] text-[#efefef] join-item">Subscribe</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div className='flex items-center justify-center h-full'><Link to='/' className="cursor-pointer"><motion.img whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }} src={logo} className='h-20 w-[75px]' alt="" /></Link>
+            <h1 className='text-[28px] font-bold text-[#074799]'>Import Export <span className='text-[#4DA8DA]'>Hub</span></h1></div>
+
         </aside>
         <nav className='text-[17px]'>
           <h6 className="footer-title">Contact</h6>
           <a className="link link-hover">Phone: +082715904</a>
+          <a className="link link-hover">Fax: +86 31 8888 6574 </a>
+
           <a className="link link-hover">E-mail: naturebloomtrust@info.com</a>
           <a className="link link-hover">Address: Dhaka, Bangladesh</a>
         </nav>
@@ -24,9 +41,10 @@ const Footer = () => {
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
+          <a className="link link-hover">Our Services</a>
         </nav>
-        <nav className='flex-col items-center mx-auto'>
-          <h6 className="footer-title text-[17px]">Social Link</h6>
+        <nav className='flex flex-col justify-center  mx-auto'>
+          <h6 className="footer-title text-[17px] pb-3">Social Link</h6>
           <div className="grid grid-flow-col gap-4 text-[#4DA8DA] cursor-pointer">
             <a>
               <svg
