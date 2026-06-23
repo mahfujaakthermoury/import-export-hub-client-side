@@ -6,7 +6,7 @@ Comprehensive Logistics Solutions Tailored For You
 🌍 **Import Export Hub** is a modern web platform where users can explore global products, manage exports, and import products into their personal dashboard with a single click. The application offers a clean UI, secure authentication, and real-time data synchronization.
 
 ## 🔗 Live Website
-👉 
+👉 https://chipper-donut-6bbd5b.netlify.app
 
 ## 🚀 Features
 - User authentication with Email/Password and Google login
